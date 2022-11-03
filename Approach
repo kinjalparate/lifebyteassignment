@@ -1,0 +1,54 @@
+DevOps
+Challenge V2
+
+
+
+Question : How would you
+further automate the management of the infrastructure if given unlimited time
+and resources?
+
+I would have followed the following steps for automating the
+deployment of secure, publicly available HA Load-Balanced Web Servers that are
+available in different AWS availability zones and will automatically rebalance
+themselves if there is no healthy web server instance in either availability
+zone and redirecting any HTTP requests to HTTPS. 
+
+
+ Launching Amazon EC2
+     Instances : We deploy Amazon EC2 instances. Specifying IP . Defining Security
+     group since they exist in the same VPC for this case. We specify different availability zones for the
+     same region. 
+
+
+ Creating Elastic Load
+     Balancer
+     : We need properties of health
+     checkers and redirecting HTTP
+     requests to HTTPS.
+
+ 
+  Health checker : This
+      can be implemented by choosing the
+      option given for it while deploying ELB.
+
+
+  Redirect HTTP to HTTPS:
+      Create listeners that acknowledge the HTTP requests.Under Rules section we select Redirect to action and mention
+      HTTPS with its port. We need to ensure
+      the security group allows traffic on HTTPS port .
+
+
+ Deploying Autoscaling  : We create a template for autoscaling so
+     as to distribute the traffic. In the Network
+     section we choose the VPC
+     we formed and deployed Amazon
+     EC2 instances in different
+     availability zones for same region. We then attach the ELB with all the specifications that we formed
+     earlier.
+     
+
+I have done  code on
+Terraform using AWS CLI and had deployed 3 Amazon EC2 instances on 3 subnets
+for different availability zones in the same region. 
+
+
